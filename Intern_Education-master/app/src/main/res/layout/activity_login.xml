@@ -52,20 +52,22 @@
                 android:paddingRight="20dp">
 
                 <EditText
+                    android:id="@+id/loginID"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/inputtext" />
 
                 <EditText
+                    android:id="@+id/loginPW"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/inputtext"
-
                     />
 
                 <Button
+                    android:id="@+id/loginButton"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginTop="10dp"

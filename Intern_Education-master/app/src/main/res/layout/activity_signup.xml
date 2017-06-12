@@ -14,24 +14,86 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
-        <EditText
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
+            android:orientation="horizontal"
             android:background="@drawable/inputtext"
-            />
-        <EditText
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+
+                android:textSize="20dp"
+                android:text=" 이메일 "
+                />
+            <EditText
+                android:id="@+id/signupID"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="3"
+                android:background="@null"
+
+                android:hint="example@naver.com"
+                />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:orientation="horizontal"
             android:background="@drawable/inputtext"
-            />
-        <EditText
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+
+                android:textSize="20dp"
+                android:text=" 비밀번호 "
+                />
+            <EditText
+                android:id="@+id/signupPassword"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="3"
+                android:background="@null"
+
+                android:inputType="textPassword"
+                />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:orientation="horizontal"
             android:background="@drawable/inputtext"
-            />
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+
+                android:textSize="20dp"
+                android:text=" 비밀번호 확인 "
+                />
+            <EditText
+                android:id="@+id/signupPassword2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="3"
+                android:background="@null"
+
+                android:inputType="textPassword"
+                />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,6 +102,7 @@
 
             >
             <TextView
+                android:id="@+id/manButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="1"
@@ -50,6 +113,7 @@
                 android:textSize="20dp"
                 android:text="남성"/>
             <TextView
+                android:id="@+id/womanButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginLeft="10dp"
@@ -64,20 +128,112 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
             <CheckBox
+                android:id="@+id/checkAll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="11" />
+            <TextView
+                android:id="@+id/checkAllText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textSize="20dp"
+                android:text="아래의 약관에 모두 동의합니다."/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/check1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_weight="8"/>
             <TextView
+                android:id="@+id/checkText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+
+                android:textSize="20dp"
+                android:text="SIZEAX 이용약관 동의 (필수)"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/check2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="8"/>
+            <TextView
+                android:id="@+id/checkText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
 
                 android:textSize="20dp"
-                android:text="이용약관, 개인정보 수집 및 이용, 메일수신에 모두 동의합니다."/>
+                android:text="SIZEAX 개인정보 이용 동의 (필수)"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/check3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="8"/>
+            <TextView
+                android:id="@+id/checkText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+
+                android:textSize="20dp"
+                android:text="SIZEAX 위치정보 이용 동의 (필수)"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/check4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="8"/>
+            <TextView
+                android:id="@+id/checkText4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:textSize="20dp"
+                android:text="SIZEAX 메일 수신 동의 (선택)"/>
+        </LinearLayout>
+
+
+
 
     </LinearLayout>
     <LinearLayout

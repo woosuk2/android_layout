@@ -42,11 +42,14 @@
         >
 
         <EditText
+            android:id="@+id/findID"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:gravity="center"
             android:background="@drawable/inputtext"
             />
         <Button
+            android:id="@+id/findButton"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/button"

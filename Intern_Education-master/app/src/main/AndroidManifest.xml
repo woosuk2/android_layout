@@ -12,27 +12,44 @@
         <activity
             android:name=".activity.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity android:name=".activity.MainActivity" />
+
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".activity.FindActivity" />
-        <activity android:name=".activity.SignupActivity" />
-        <activity android:name=".activity.SignupInformationActivity" />
-        <activity android:name=".activity.SignupInformation2Activity" />
-        <activity android:name=".activity.SignupInformation3Activity" />
-        <activity android:name=".activity.CameraMeasureActivity" />
-        <activity android:name=".activity.UpdatePassword"></activity>
-        <activity android:name=".activity.ContactActivity">
-
+            android:theme="@style/AppTheme" >
         </activity>
-        <activity android:name=".activity.MyPageActivity">
+
+        <activity android:name=".activity.FindActivity" />
+
+        <activity android:name=".activity.SignupActivity">
+        </activity>
+
+        <activity android:name=".activity.SignupInformationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activity.SignupInformation2Activity" />
+
+        <activity android:name=".activity.SignupInformation3Activity" />
+
+        <activity android:name=".activity.CameraMeasureActivity" />
+
+        <activity android:name=".activity.UpdatePassword"></activity>
+
+        <activity android:name=".activity.ContactActivity">
+        </activity>
+
+        <activity android:name=".activity.MyPageActivity">
+        </activity>
+
     </application>
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

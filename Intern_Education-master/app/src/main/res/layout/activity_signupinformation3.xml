@@ -98,7 +98,7 @@
 
                     android:textSize="20dp"
                     android:textColor="#FFFFFF"
-                    android:text="다음"/>
+                    android:text="완료"/>
             </LinearLayout>
 
         </RelativeLayout>
