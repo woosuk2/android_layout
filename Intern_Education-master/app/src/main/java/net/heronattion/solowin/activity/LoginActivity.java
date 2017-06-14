@@ -44,7 +44,6 @@ public class LoginActivity extends BaseActivity {
         loginButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 loginButtonEvent();
             }
         });
@@ -84,27 +83,18 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 //TODO : 통신에 성공했을 때 이벤트를 적어주면 됨
-
                 String response = new String(responseBody);
-
                 switch(response) {
-
                     case "id_pw_empty":
-
                         Toast.makeText(LoginActivity.this, "아이디가 비었습니다.", Toast.LENGTH_SHORT).show();
-
                         break;
 
                     case "fail" :
-
                         Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
-
                         break;
 
                     case "server_connect_fail":
-
                         Toast.makeText(LoginActivity.this, "서버 연결이 불안정합니다.", Toast.LENGTH_SHORT).show();
-
                         break;
 
                     default :

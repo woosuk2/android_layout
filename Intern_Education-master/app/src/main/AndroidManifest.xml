@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
 
         <activity android:name=".activity.MainActivity" />
 
@@ -39,7 +40,8 @@
 
         <activity android:name=".activity.CameraMeasureActivity" />
 
-        <activity android:name=".activity.UpdatePassword"></activity>
+        <activity android:name=".activity.UpdatePassword">
+        </activity>
 
         <activity android:name=".activity.ContactActivity">
         </activity>

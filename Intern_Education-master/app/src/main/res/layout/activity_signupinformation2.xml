@@ -74,7 +74,6 @@
             android:layout_gravity="bottom"
 
             android:background="@drawable/inputtext"
-
             android:hint=" ex)반팔티셔츠"
             android:textAlignment="center"/>
     </LinearLayout>
