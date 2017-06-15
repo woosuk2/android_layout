@@ -303,6 +303,8 @@ public class SignupActivity extends BaseActivity{
                 else {
                     signupButtonEvent();
                     Intent intent = new Intent(mContext, SignupInformationActivity.class);
+                    intent.putExtra("manFlag", manFlag);
+                    intent.putExtra("womanFlag", womanFlag);
                     startActivity(intent);
                     finish();
                 }
@@ -354,8 +356,13 @@ public class SignupActivity extends BaseActivity{
         params.put("ID", signupID.getText().toString());
         params.put("PW", signupPassword.getText().toString());
 
+        if(manFlag==1 && womanFlag==0)
+            params.put("Gender", 1);
+        else
+            params.put("Gender", 2);
+
         //HttpClient 클래스에 기본 URL이 정해져 있음 http://heronation.net/ 이하의 경로를 적어주면 됨
-        HttpClient.post("sizeax/JYD/php/signup.php", params, new AsyncHttpResponseHandler() {
+        HttpClient.post("android/signup.php", params, new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -363,6 +370,9 @@ public class SignupActivity extends BaseActivity{
                 String response = new String(responseBody);
 
                 switch(response) {
+                    case "success" :
+                        Toast.makeText(SignupActivity.this, "가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                        break;
                     case "duplicated":
                         Toast.makeText(SignupActivity.this, "중복된 이메일입니다.", Toast.LENGTH_SHORT).show();
                         break;
@@ -370,7 +380,7 @@ public class SignupActivity extends BaseActivity{
                         Toast.makeText(SignupActivity.this, "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show();
                         break;
                     default :
-                        Toast.makeText(SignupActivity.this, "가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignupActivity.this, "알 수 없는 오류가 발생했습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
                         break;
                 }
 

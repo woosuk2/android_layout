@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,6 +9,7 @@
     android:background="#D7D7D7"
     android:orientation="vertical"
     tools:context=".activity.SignupActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +21,7 @@
             android:layout_marginTop="30dp"
 
             android:textColor="#7623D7"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textAlignment="center"
             android:text="추가 정보를 입력하시고 사이즈를 한번 측정 후\r\n 다양한 브랜드의 옷과 비교하세요"/>
     </LinearLayout>
@@ -33,9 +37,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="15dp"
 
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:text="생년월일"/>
 
         <LinearLayout
@@ -49,15 +53,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
-
                 android:layout_weight="1">
                 <Spinner
+                    android:id="@+id/Year"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="0dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/spinner"
                     android:entries="@array/Year"
                     android:textAlignment="center"
+                    android:paddingRight="10dp"
                     >
                 </Spinner>
 
@@ -69,11 +73,13 @@
 
                 android:layout_weight="1">
                 <Spinner
+                    android:id="@+id/Month"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:background="@drawable/spinner"
                     android:entries="@array/Month"
                     android:textAlignment="center"
+                    android:paddingRight="10dp"
                     >
                 </Spinner>
 
@@ -85,13 +91,14 @@
 
                 android:layout_weight="1">
                 <Spinner
+                    android:id="@+id/Day"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/spinner"
                     android:entries="@array/Day"
-                    android:id="@+id/spinner1"
                     android:textAlignment="center"
+                    android:paddingRight="10dp"
                     >
                 </Spinner>
             </LinearLayout>
@@ -102,19 +109,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
 
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:text="스타일"/>
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/scSignupAdd2"
+            >
+
+            <LinearLayout
+                android:id="@+id/linSignupStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp">
+            </LinearLayout>
+
+        </ScrollView>
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -155,7 +183,7 @@
 
                     android:textSize="20dp"
                     android:textColor="#FFFFFF"
-                    android:text="저장"/>
+                    android:text="다음"/>
             </LinearLayout>
 
         </RelativeLayout>

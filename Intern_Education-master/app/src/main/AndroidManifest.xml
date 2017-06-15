@@ -27,14 +27,17 @@
         </activity>
 
         <activity android:name=".activity.SignupInformationActivity">
+        </activity>
+
+        <activity android:name=".activity.SignupInformation2Activity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"
+                    />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activity.SignupInformation2Activity" />
 
         <activity android:name=".activity.SignupInformation3Activity" />
 
@@ -52,6 +55,10 @@
     </application>
 
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
 
 </manifest>

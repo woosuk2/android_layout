@@ -22,8 +22,9 @@ import static com.loopj.android.http.AsyncHttpClient.log;
 public class SplashActivity extends BaseActivity {
     Button loginButton;
     Button signupButton;
-    private String userID;
-    private String userPassword;
+    private String userID = "";
+    private String userPassword = "";
+    private String userPkey = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,31 +97,35 @@ public class SplashActivity extends BaseActivity {
                 userID = myCookieStore.getCookies().get(i).getValue();
             else if(myCookieStore.getCookies().get(i).getName().equals("UserPWD"))
                 userPassword = myCookieStore.getCookies().get(i).getValue();
+            else if(myCookieStore.getCookies().get(i).getName().equals("UserPKEY"))
+                userPkey = myCookieStore.getCookies().get(i).getValue();
         }
 
-        // get cookie 에서 받아오는 값의 특수 문자 값이 디코딩처리가 안됨.. 추후에 처리해야함.
-        // 우선 해당 특수문자에 대한 ASCII를 변환해주었음.
-        userID = userID.replace("%40", "@");
-        userPassword = userPassword.replace("%7E", "~");
-        userPassword = userPassword.replace("%60", "`");
-        userPassword = userPassword.replace("%21", "!");
-        userPassword = userPassword.replace("%40", "@");
-        userPassword = userPassword.replace("%23", "#");
-        userPassword = userPassword.replace("%24", "$");
-        userPassword = userPassword.replace("%25", "%");
-        userPassword = userPassword.replace("%5E", "^");
-        userPassword = userPassword.replace("%2A", "*");
-        userPassword = userPassword.replace("%28", "(");
-        userPassword = userPassword.replace("%29", ")");
-        userPassword = userPassword.replace("%2D", "-");
-        userPassword = userPassword.replace("%5F", "_");
-        userPassword = userPassword.replace("%2B", "+");
-        userPassword = userPassword.replace("%3D", "=");
-        userPassword = userPassword.replace("%7C", "|");
-        userPassword = userPassword.replace("%5C", "\\");
+            // get cookie 에서 받아오는 값의 특수 문자 값이 디코딩처리가 안됨.. 추후에 처리해야함.
+            // 우선 해당 특수문자에 대한 ASCII를 변환해주었음.
+            userID = userID.replace("%40", "@");
+            userPassword = userPassword.replace("%7E", "~");
+            userPassword = userPassword.replace("%60", "`");
+            userPassword = userPassword.replace("%21", "!");
+            userPassword = userPassword.replace("%40", "@");
+            userPassword = userPassword.replace("%23", "#");
+            userPassword = userPassword.replace("%24", "$");
+            userPassword = userPassword.replace("%25", "%");
+            userPassword = userPassword.replace("%5E", "^");
+            userPassword = userPassword.replace("%2A", "*");
+            userPassword = userPassword.replace("%28", "(");
+            userPassword = userPassword.replace("%29", ")");
+            userPassword = userPassword.replace("%2D", "-");
+            userPassword = userPassword.replace("%5F", "_");
+            userPassword = userPassword.replace("%2B", "+");
+            userPassword = userPassword.replace("%3D", "=");
+            userPassword = userPassword.replace("%7C", "|");
+            userPassword = userPassword.replace("%5C", "\\");
 
-        log.i("id: ", userID);
-        log.i("pw: ", userPassword );
+            log.i("id: ", userID);
+            log.i("pw: ", userPassword);
+            log.i("pkey: ", userPkey);
+
         client.setCookieStore(myCookieStore);
 
         CheckLogin();
@@ -142,6 +147,8 @@ public class SplashActivity extends BaseActivity {
                 //TODO : 통신에 성공했을 때 이벤트를 적어주면 됨
                 String response = new String(responseBody);
                 switch(response) {
+                    case "id_pw_empty" :
+                        Toast.makeText(SplashActivity.this, "로그인 실패.", Toast.LENGTH_SHORT).show();
                     case "fail" :
                         Toast.makeText(SplashActivity.this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
                         break;
@@ -150,9 +157,11 @@ public class SplashActivity extends BaseActivity {
                         Toast.makeText(SplashActivity.this, "서버 연결이 불안정합니다.", Toast.LENGTH_SHORT).show();
                         break;
 
-                    default :
+                    case "success" :
                         Toast.makeText(SplashActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
 //                        intentActivity(getApplicationContext(), ProductListActivity.class);
+                        break;
+                    default:
                         break;
                 }
 

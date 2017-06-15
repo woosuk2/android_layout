@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:background="#D7D7D7"
     android:orientation="vertical"
+    android:id="@+id/signupInformation2"
     tools:context=".activity.SignupInformation2Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         >
         <TextView
             android:layout_width="match_parent"
@@ -20,11 +22,24 @@
             android:textSize="20dp"
             android:textAlignment="center"
             android:text="측정하실 옷의 종류를 선택해주세요"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:id="@+id/scCategory"
+            android:keepScreenOn="true">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingBottom="5dp"
+                android:orientation="vertical"
+                android:id="@+id/linCategory">
+
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
     <LinearLayout
@@ -64,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:text="옷이름 "/>
 
         <EditText
