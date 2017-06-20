@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,17 +49,22 @@ public class SignupActivity extends BaseActivity{
     private TextView checkText3;
     private android.widget.CheckBox check4;
     private TextView checkText4;
+    private ImageView backButton;
     private android.widget.EditText signupID;
     private android.widget.EditText signupPassword;
     private android.widget.EditText signupPassword2;
 
     private String Passwrod_PATTERN = "^.*(?=.{8,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$";
+    private android.widget.LinearLayout idLayout;
+    private android.widget.LinearLayout passwordLayout;
+    private android.widget.LinearLayout passwordCheckLayout;
 //    private String Email_PATTERN = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
 
         setCustomActionBar();
         title = (TextView) findViewById(R.id.title);
@@ -72,17 +79,69 @@ public class SignupActivity extends BaseActivity{
     public void setupEvents() {
         super.setupEvents();
 
+        backButton.setImageResource(R.drawable.backbutton);
+        backButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, SplashActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        signupID.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                    idLayout.setBackgroundResource(R.drawable.inputtext_focus);
+                else
+                    idLayout.setBackgroundResource(R.drawable.inputtext);
+            }
+        });
+
+        signupPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                    passwordLayout.setBackgroundResource(R.drawable.inputtext_focus);
+                else
+                    passwordLayout.setBackgroundResource(R.drawable.inputtext);
+            }
+        });
+
+        signupPassword2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                    passwordCheckLayout.setBackgroundResource(R.drawable.inputtext_focus);
+                else
+                    passwordCheckLayout.setBackgroundResource(R.drawable.inputtext);
+            }
+        });
+
         manButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(womanFlag == 0) {
                     if(manFlag == 0){
-                        manButton.setBackgroundResource(R.drawable.select_inputtext);
+                        manButton.setBackgroundResource(R.drawable.sex_button_click);
+                        manButton.setTextColor(Color.parseColor("#7623D7"));
                         manFlag = 1;
                     } else {
-                        manButton.setBackgroundResource(R.drawable.loginbutton);
+                        manButton.setBackgroundResource(R.drawable.sex_button);
+                        manButton.setTextColor(Color.parseColor("#999999"));
                         manFlag = 0;
                     }
+                }
+                // womanFlag == 1 일때 여성 클릭 해제하고 남성클릭
+                else if (womanFlag==1 && manFlag==0){
+                    manButton.setBackgroundResource(R.drawable.sex_button_click);
+                    manButton.setTextColor(Color.parseColor("#7623D7"));
+                    manFlag = 1;
+
+                    womanButton.setBackgroundResource(R.drawable.sex_button);
+                    womanButton.setTextColor(Color.parseColor("#999999"));
+                    womanFlag = 0;
                 }
             }
         });
@@ -92,12 +151,23 @@ public class SignupActivity extends BaseActivity{
             public void onClick(View view) {
                 if(manFlag == 0){
                     if(womanFlag == 0){
-                        womanButton.setBackgroundResource(R.drawable.select_inputtext);
+                        womanButton.setBackgroundResource(R.drawable.sex_button_click);
+                        womanButton.setTextColor(Color.parseColor("#7623D7"));
                         womanFlag = 1;
                     } else {
-                        womanButton.setBackgroundResource(R.drawable.loginbutton);
+                        womanButton.setBackgroundResource(R.drawable.sex_button);
+                        womanButton.setTextColor(Color.parseColor("#999999"));
                         womanFlag = 0;
                     }
+                }
+                else if (manFlag==1 && womanFlag==0){
+                    womanButton.setBackgroundResource(R.drawable.sex_button_click);
+                    womanButton.setTextColor(Color.parseColor("#7623D7"));
+                    womanFlag = 1;
+
+                    manButton.setBackgroundResource(R.drawable.sex_button);
+                    manButton.setTextColor(Color.parseColor("#999999"));
+                    manFlag = 0;
                 }
             }
         });
@@ -327,6 +397,8 @@ public class SignupActivity extends BaseActivity{
     public void bindViews() {
         super.bindViews();
 
+        backButton = (ImageView) findViewById(R.id.backButton);
+
         this.signupNextButton = (TextView) findViewById(R.id.signupNextButton);
         this.cancelButton = (TextView) findViewById(R.id.cancelButton);
         this.checkText4 = (TextView) findViewById(R.id.checkText4);
@@ -339,10 +411,13 @@ public class SignupActivity extends BaseActivity{
         this.check1 = (CheckBox) findViewById(R.id.check1);
         this.checkAllText = (TextView) findViewById(R.id.checkAllText);
         this.checkAll = (CheckBox) findViewById(R.id.checkAll);
-        this.womanButton = (TextView) findViewById(R.id.womanButton);
         this.manButton = (TextView) findViewById(R.id.manButton);
+        this.womanButton = (TextView) findViewById(R.id.womanButton);
+        this.passwordCheckLayout = (LinearLayout) findViewById(R.id.passwordCheckLayout);
         this.signupPassword2 = (EditText) findViewById(R.id.signupPassword2);
+        this.passwordLayout = (LinearLayout) findViewById(R.id.passwordLayout);
         this.signupPassword = (EditText) findViewById(R.id.signupPassword);
+        this.idLayout = (LinearLayout) findViewById(R.id.idLayout);
         this.signupID = (EditText) findViewById(R.id.signupID);
 
 

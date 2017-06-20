@@ -49,6 +49,16 @@ public class FindActivity extends BaseActivity{
             }
         });
 
+        findID.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                    findID.setBackgroundResource(R.drawable.inputtext_focus);
+                else
+                    findID.setBackgroundResource(R.drawable.inputtext);
+            }
+        });
+
     }
 
     @Override

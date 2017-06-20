@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,19 +32,59 @@ public class UpdatePassword extends BaseActivity {
 
     private String Passwrod_PATTERN = "^.*(?=.{8,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$";
     private String userID;
+    private android.widget.LinearLayout updateNewPasswordLayout;
+    private android.widget.LinearLayout updateNewPassword2Layout;
+    private android.widget.LinearLayout updateOriginalPasswordLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_password);
 
+
         bindViews();
         setupEvents();
+
+
+        // 연희씨 커스텀바 사용해야함
+        setCustomActionBar();
+        TextView title = (TextView) findViewById(R.id.title);
+        title.setText("여니씨커스텀바");
     }
 
     @Override
     public void setupEvents() {
         super.setupEvents();
+
+        updateOriginalPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                    updateOriginalPasswordLayout.setBackgroundResource(R.drawable.inputtext_focus);
+                else
+                    updateOriginalPasswordLayout.setBackgroundResource(R.drawable.inputtext);
+            }
+        });
+
+        updateNewPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                    updateNewPasswordLayout.setBackgroundResource(R.drawable.inputtext_focus);
+                else
+                    updateNewPasswordLayout.setBackgroundResource(R.drawable.inputtext);
+            }
+        });
+
+        updateNewPassword2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                    updateNewPassword2Layout.setBackgroundResource(R.drawable.inputtext_focus);
+                else
+                    updateNewPassword2Layout.setBackgroundResource(R.drawable.inputtext);
+            }
+        });
 
         updatePasswordButton.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -79,12 +120,14 @@ public class UpdatePassword extends BaseActivity {
     public void bindViews() {
         super.bindViews();
 
-        this.nextButton2 = (TextView) findViewById(R.id.nextButton2);
-        this.updateNewPassword2 = (EditText) findViewById(R.id.updateNewPassword2);
-        this.updateNewPassword = (EditText) findViewById(R.id.updateNewPassword);
-        this.updateOriginalPassword = (EditText) findViewById(R.id.updateOriginalPassword);
         this.withdrawButton = (TextView) findViewById(R.id.withdrawButton);
         this.updatePasswordButton = (TextView) findViewById(R.id.updatePasswordButton);
+        this.updateOriginalPasswordLayout = (LinearLayout) findViewById(R.id.updateOriginalPasswordLayout);
+        this.updateNewPassword2Layout = (LinearLayout) findViewById(R.id.updateNewPassword2Layout);
+        this.updateNewPassword2 = (EditText) findViewById(R.id.updateNewPassword2);
+        this.updateNewPasswordLayout = (LinearLayout) findViewById(R.id.updateNewPasswordLayout);
+        this.updateNewPassword = (EditText) findViewById(R.id.updateNewPassword);
+        this.updateOriginalPassword = (EditText) findViewById(R.id.updateOriginalPassword);
 
     }
 

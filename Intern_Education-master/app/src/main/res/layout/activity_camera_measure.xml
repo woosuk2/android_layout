@@ -25,15 +25,17 @@
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
                     android:text="어깨"
                     />
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:src="@drawable/check_red"
+                    android:paddingRight="18dp"
                     android:layout_weight="1"/>
             </LinearLayout>
 

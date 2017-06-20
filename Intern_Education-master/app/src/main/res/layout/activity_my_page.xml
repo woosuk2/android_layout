@@ -3,196 +3,208 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D7D7D7"
+    android:background="#E7E7E7"
     android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     tools:context=".activity.MyPageActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="20dp"
-            android:textSize="30dp"
-            android:text="성별"/>
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="15dp"
+            android:text="성별"
+            android:textSize="15dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
 
-                android:background="@drawable/loginbutton"
-                android:textSize="20dp"
-                android:text="여성"/>
             <TextView
+                android:id="@+id/mypageWomanButton"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:background="@drawable/sex_button"
 
-                android:background="@drawable/loginbutton"
-                android:textSize="20dp"
-                android:text="남성"/>
+                android:gravity="center"
+                android:text="여성"
+                android:textColor="#999999"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/mypageManButton"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/sex_button"
+
+                android:gravity="center"
+                android:text="남성"
+                android:textColor="#999999"
+                android:textSize="15dp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="20dp"
-            android:textSize="30dp"
-            android:text="생년월일"/>
+            android:layout_marginTop="10dp"
+            android:text="생년월일"
+            android:textSize="15dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:background="@drawable/inputtext"
+            android:layout_marginTop="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <Spinner
+                    android:id="@+id/mypageYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/spinner"
+                    android:entries="@array/Year"
+                    android:paddingRight="15dp"
+                    android:textAlignment="center"></Spinner>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Spinner
+                    android:id="@+id/mypageMonth"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/spinner"
+                    android:entries="@array/Month"
+                    android:paddingRight="10dp"
+                    android:textAlignment="center"></Spinner>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_weight="1">
+
+                <Spinner
+                    android:id="@+id/mypageDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/spinner"
+                    android:entries="@array/Day"
+                    android:paddingRight="10dp"
+                    android:textAlignment="center"></Spinner>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:text="스타일"
+            android:textSize="15dp" />
+
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/scSignupAdd2">
+            <LinearLayout
+                android:id="@+id/mypageStyleLinear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp">
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:text="스타일 기준"
+            android:textSize="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             >
-
-            <Spinner
+            <net.heronattion.solowin.bubbleseekbar.BubbleSeekBar
+                android:id="@+id/demo_3_seek_bar_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/Year"
-                android:gravity="center">
-            </Spinner>
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/Month"
-                android:gravity="center">
-            </Spinner>
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/Day"
-                android:id="@+id/spinner1"
-                android:gravity="center">
-            </Spinner>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="20dp"
-            android:textSize="30dp"
-            android:text="스타일"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/loginbutton"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:text="모던"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/loginbutton"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:text="트렌드"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/loginbutton"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:text="댄디"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="20dp"
-            android:textSize="30dp"
-            android:text="스타일 기준"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="11111111111111111111"/>
+                android:layout_marginTop="8dp"/>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
 
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/initialButton"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/loginbutton"
+                    android:background="@drawable/cancelbutton"
                     android:gravity="center"
 
-                    android:textSize="20dp"
-                    android:textColor="#000000"
-                    android:text="건너뛰기"/>
+                    android:text="초기화"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/nextButton2"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/button"
                     android:gravity="center"
 
-                    android:textSize="20dp"
+                    android:text="다음"
                     android:textColor="#FFFFFF"
-                    android:text="다음"/>
+                    android:textSize="15dp" />
             </LinearLayout>
 
         </RelativeLayout>
     </LinearLayout>
-
 </LinearLayout>

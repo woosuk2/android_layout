@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class LoginActivity extends BaseActivity {
 
     private TextView findButton;
     private Button loginButton;
+    private ImageView backButton;
     private android.widget.EditText loginID;
     private android.widget.EditText loginPW;
 
@@ -27,13 +29,18 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        this.loginButton = (Button) findViewById(R.id.loginButton);
+        this.loginPW = (EditText) findViewById(R.id.loginPW);
+        this.loginID = (EditText) findViewById(R.id.loginID);
+        this.findButton = (TextView) findViewById(R.id.findButton);
 
 
         bindViews();
-        setupEvents();
         setCustomActionBar();
+        backButton = (ImageView) findViewById(R.id.backButton);
+        backButton.setImageResource(R.drawable.backbutton);
 
+        setupEvents();
     }
 
     @Override
@@ -54,6 +61,42 @@ public class LoginActivity extends BaseActivity {
                 Intent intent = new Intent(mContext, FindActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        loginID.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+             @Override
+             public void onFocusChange(View v, boolean hasFocus) {
+                 if(hasFocus)
+                     loginID.setBackgroundResource(R.drawable.inputtext_focus);
+                 else
+                     loginID.setBackgroundResource(R.drawable.inputtext);
+             }
+        });
+
+        loginPW.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                    loginPW.setBackgroundResource(R.drawable.inputtext_focus);
+                else
+                    loginPW.setBackgroundResource(R.drawable.inputtext);
+            }
+        });
+
+        backButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, SplashActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        loginID.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginID.setBackgroundResource(R.drawable.inputtext_focus);
             }
         });
     }
@@ -84,12 +127,12 @@ public class LoginActivity extends BaseActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 //TODO : 통신에 성공했을 때 이벤트를 적어주면 됨
                 String response = new String(responseBody);
-                switch(response) {
+                switch (response) {
                     case "id_pw_empty":
                         Toast.makeText(LoginActivity.this, "아이디가 비었습니다.", Toast.LENGTH_SHORT).show();
                         break;
 
-                    case "fail" :
+                    case "fail":
                         Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
                         break;
 
@@ -97,7 +140,7 @@ public class LoginActivity extends BaseActivity {
                         Toast.makeText(LoginActivity.this, "서버 연결이 불안정합니다.", Toast.LENGTH_SHORT).show();
                         break;
 
-                    default :
+                    default:
 
                         Toast.makeText(LoginActivity.this, R.string.login_welcome_message, Toast.LENGTH_SHORT).show();
 //                        intentActivity(getApplicationContext(), ProductListActivity.class);

@@ -38,7 +38,7 @@ public class SignupInformation2Activity extends BaseActivity {
     private android.widget.LinearLayout signupInformation2;
 
     //브랜드, 카테고리, 색상, 스타일 데이터를 파싱하기 위한 변수
-    private String[] mOptionListItem;
+    private String[] mOptionListItem, sCategoryList, selCategoryPkey;
     private String[][] mStyleItem;
     private String[][] mBrandItem;
     private String[][] mColorItem;
@@ -53,6 +53,8 @@ public class SignupInformation2Activity extends BaseActivity {
     private int categoryFlag = 0;
     private int manFlag;
     private int womanFlag;
+    private int checkboxFlag = 0;
+    private int i;
 
 
 
@@ -67,6 +69,7 @@ public class SignupInformation2Activity extends BaseActivity {
 
         manFlag = getIntent().getIntExtra("manFlag", 0);
         womanFlag = getIntent().getIntExtra("womanFlag", 0);
+        sCategoryList = new String[]{};
 
         bindViews();
         setupEvents();
@@ -82,7 +85,14 @@ public class SignupInformation2Activity extends BaseActivity {
         nextButton2.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(mContext, SignupInformation3Activity.class);
+
+                intent.putExtra("PKey", strCategoryPkey);
+                intent.putExtra("Name", textView2.getText().toString());
+
+                Log.i("Category Pkey: ", strCategoryPkey);
+                Log.i("textView : ", textView2.getText().toString());
                 startActivity(intent);
                 finish();
             }
@@ -150,9 +160,7 @@ public class SignupInformation2Activity extends BaseActivity {
                 //TODO : 통신에 실패했을 경우
 
                 Toast.makeText(mContext, "죄송합니다. 서버와 연결이 불안정합니다.", Toast.LENGTH_SHORT).show();
-
             }
-
         });
     }
 
@@ -171,7 +179,7 @@ public class SignupInformation2Activity extends BaseActivity {
         param.height = LinearLayout.LayoutParams.WRAP_CONTENT;
         param.weight = 1;
 
-        for (int i = 0; i < checkBoxes.length; i++) {
+        for (i = 0; i < checkBoxes.length; i++) {
             checkBoxes[i] = new CheckBox(this);
             manFlag = 1;
             womanFlag = 0;
@@ -185,34 +193,37 @@ public class SignupInformation2Activity extends BaseActivity {
                 /*
                 버튼 세팅
                  */
-                checkBoxes[i].setTextSize(15);
+                checkBoxes[i].setTextSize(13);
                 checkBoxes[i].setId(Integer.parseInt(itemArray[i][0]));
                 checkBoxes[i].setBackgroundResource(R.drawable.signup_border);
                 checkBoxes[i].setButtonDrawable(null);
                 checkBoxes[i].setGravity(Gravity.CENTER);
                 checkBoxes[i].setLayoutParams(param);
-                checkBoxes[i].setTextColor(Color.parseColor("#5b6fa2"));
-                checkBoxes[i].setHeight(120);
+                checkBoxes[i].setTextColor(Color.parseColor("#999999"));
+//                checkBoxes[i].setHeight(120);
+
 
                 checkBoxes[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) {
+                        if (isChecked && checkboxFlag==0) {
+                            checkboxFlag = 1;
                             buttonView.setBackgroundResource(R.drawable.signup_border_check);
-                            buttonView.setTextColor(Color.parseColor("#000000"));
-                            strCategoryPkey += buttonView.getId() + "/";
+                            buttonView.setTextColor(Color.parseColor("#7623D7"));
+                            strCategoryPkey = buttonView.getId()+"";
                         } else {
+                            checkboxFlag = 0;
                             buttonView.setBackgroundResource(R.drawable.signup_border);
-                            buttonView.setTextColor(Color.parseColor("#5b6fa2"));
+                            buttonView.setTextColor(Color.parseColor("#999999"));
 
-                            String temp = strCategoryPkey;
-                            temp = temp.replace(buttonView.getId() + "/", "");
-                            strCategoryPkey = temp;
+//                            String temp = strCategoryPkey;
+//                            temp = temp.replace(buttonView.getId() + "/", "");
+//                            strCategoryPkey = temp;
                         }
                     }
                 });
             }
-             else if (womanFlag == 1 && itemArray[i][2].toString().equals("2")) {
+            else if (womanFlag == 1 && itemArray[i][2].toString().equals("2")) {
                 categoryFlag = 2;
                 categoryCount++;
 
@@ -228,19 +239,21 @@ public class SignupInformation2Activity extends BaseActivity {
                 checkBoxes[i].setButtonDrawable(null);
                 checkBoxes[i].setGravity(Gravity.CENTER);
                 checkBoxes[i].setLayoutParams(param);
-                checkBoxes[i].setTextColor(Color.parseColor("#5b6fa2"));
+                checkBoxes[i].setTextColor(Color.parseColor("#999999"));
                 checkBoxes[i].setHeight(120);
 
                 checkBoxes[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) {
+                        if (isChecked && checkboxFlag==0) {
+                            checkboxFlag = 1;
                             buttonView.setBackgroundResource(R.drawable.signup_border_check);
-                            buttonView.setTextColor(Color.parseColor("#000000"));
+                            buttonView.setTextColor(Color.parseColor("#7623D7"));
                             strCategoryPkey += buttonView.getId() + "/";
                         } else {
+                            checkboxFlag = 0;
                             buttonView.setBackgroundResource(R.drawable.signup_border);
-                            buttonView.setTextColor(Color.parseColor("#5b6fa2"));
+                            buttonView.setTextColor(Color.parseColor("#999999"));
 
                             String temp = strCategoryPkey;
                             temp = temp.replace(buttonView.getId() + "/", "");
@@ -310,6 +323,13 @@ public class SignupInformation2Activity extends BaseActivity {
                     linLayout.addView(linOptionLayout);
                 }
             }
+        }
+    }
+
+    private void setFilter() {
+        if (!strCategoryPkey.equals("")) {
+            selCategoryPkey = strCategoryPkey.split("/");
+            sCategoryList = selCategoryPkey;
         }
     }
 }

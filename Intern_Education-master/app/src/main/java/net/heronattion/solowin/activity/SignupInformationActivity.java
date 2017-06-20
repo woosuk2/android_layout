@@ -65,8 +65,11 @@ public class SignupInformationActivity extends BaseActivity {
         setContentView(R.layout.activity_signupinformation);
 
 
-        manFlag = getIntent().getIntExtra("manFlag", 0);
-        womanFlag = getIntent().getIntExtra("womanFlag", 0);
+
+//        manFlag = getIntent().getIntExtra("manFlag", 0);
+//        womanFlag = getIntent().getIntExtra("womanFlag", 0);
+        manFlag = 1;
+        womanFlag = 0;
 
         strStylePkey = "";
         selStylePkey = new String[]{};
@@ -218,11 +221,11 @@ public class SignupInformationActivity extends BaseActivity {
 
             checkBoxes[i].setText(itemArray[i][1]);
             // 버튼 디자인 부분 //
-            checkBoxes[i].setTextSize(20);
+            checkBoxes[i].setTextSize(13);
             checkBoxes[i].setId(Integer.parseInt(itemArray[i][0].toString()));
             checkBoxes[i].setBackgroundResource(R.drawable.signup_border);
             checkBoxes[i].setButtonDrawable(null);
-            checkBoxes[i].setHeight(120);
+//            checkBoxes[i].setHeight(120);
             checkBoxes[i].setGravity(Gravity.CENTER);
             checkBoxes[i].setLayoutParams(param);
             checkBoxes[i].setTextColor(Color.parseColor("#5b6fa2"));
@@ -276,7 +279,6 @@ public class SignupInformationActivity extends BaseActivity {
     }
 
     private void setFilter() {
-
         if (!strStylePkey.equals("")) {
             selStylePkey = strStylePkey.split("/");
             sStyleList = selStylePkey;

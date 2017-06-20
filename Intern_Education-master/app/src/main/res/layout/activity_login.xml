@@ -2,29 +2,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D7D7D7"
+    android:background="#E7E7E7"
     android:orientation="vertical"
     tools:context=".activity.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30px"
+            android:layout_marginTop="30dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp">
-
+                >
 
                 <TextView
                     android:layout_width="match_parent"
@@ -46,78 +45,88 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp">
-
+                android:orientation="vertical">
                 <EditText
                     android:id="@+id/loginID"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/inputtext" />
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/inputtext"
+
+                    android:textSize="15dp"
+                    android:hint="example@naver.com"/>
 
                 <EditText
                     android:id="@+id/loginPW"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="10dp"
                     android:background="@drawable/inputtext"
-                    />
+                    android:textSize="15dp"/>
 
                 <Button
                     android:id="@+id/loginButton"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/button"
 
                     android:text="로그인"
                     android:textColor="#FFFFFF"
-                    android:textSize="25dp" />
-
+                    android:textSize="15dp" />
             </LinearLayout>
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
-            android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:layout_height="wrap_content">
 
-            <Button
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button"
+                android:layout_height="match_parent">
 
-                android:text="카톡"
-                android:textColor="#FFFFFF"
-                android:textSize="25dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button"
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/button"
 
-                android:text="네이버"
-                android:textColor="#FFFFFF"
-                android:textSize="25dp" />
+                        android:text="카톡"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15dp" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button"
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button"
 
-                android:text="페이스북"
-                android:textColor="#FFFFFF"
-                android:textSize="25dp" />
+                        android:text="네이버"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15dp" />
 
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button"
+
+                        android:text="페이스북"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
 
     </LinearLayout>
